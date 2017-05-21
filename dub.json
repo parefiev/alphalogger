@@ -1,0 +1,12 @@
+{
+	"name": "alphalogger",
+	"authors": [
+		"Pavel Arefiev"
+	],
+	"description": "Basic minimal logger",
+	"copyright": "Copyright © 2017, Pavel Arefiev",
+	"license": "LGPL-3.0 or later",
+	"dependencies": {
+		"ialphalogger": "*"
+	}
+}
