@@ -3,6 +3,13 @@
 	"authors": [
 		"Pavel Arefiev"
 	],
+	"configurations": [{
+		"name": "lib",
+		"targetType": "library"
+	}, {
+		"name": "testapp",
+		"targetType": "executable"
+	}],
 	"dependencies": {
 		"ialphalogger": "*"
 	},
