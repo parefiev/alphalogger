@@ -25,6 +25,10 @@ class StreamLogger : AlphaLogger
 
 	public void log(LogLevel l, string m)
 	{
+		/**
+		  * @todo Reserve place for timezone
+		  * @todo print timezone (+01:00, -02:00, etc.) anyway and always
+		  */
 		auto prefix = this.embrace(format("%-27s", Clock.currTime().toISOExtString()));
 		prefix ~= this.embrace(LogLevelConverter.to4LetterString(l));
 		prefix ~= " ";
