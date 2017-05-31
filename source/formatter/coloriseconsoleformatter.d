@@ -21,16 +21,26 @@ class ColoriseConsoleFormatter : IFormatter
 		switch (l)
 		{
 			case LogLevel.EMERGENCY:
-				result = s.rainbow.red;
+				result = s.rainbow.lightRed;
 				break;
 			case LogLevel.ALERT:
+				result = s.rainbow.magenta;
+				break;
 			case LogLevel.CRITICAL:
+				result = s.rainbow.lightMagenta;
+				break;
 			case LogLevel.ERROR:
-			case LogLevel.WARNING:
 				result = s.rainbow.yellow;
 				break;
+			case LogLevel.WARNING:
+				result = s.rainbow.lightYellow;
+				break;
 			case LogLevel.NOTICE:
+				result = s.rainbow.cyan;
+				break;
 			case LogLevel.INFO:
+				result = s.rainbow.lightCyan;
+				break;
 			case LogLevel.DEBUG:
 				result = s.rainbow.green;
 				break;
