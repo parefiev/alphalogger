@@ -1,11 +1,11 @@
 import std.stdio;
-import alphalogger;
 import loglevel;
 import std.datetime;
 import std.format : format;
 import loglevelconverter;
+import iloggerback;
 
-class StreamLogger : AlphaLogger
+class StreamLogger : ILoggerBack
 {
 	protected File stdout;
 	protected File stderr;

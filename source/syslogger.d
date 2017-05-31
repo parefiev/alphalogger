@@ -1,10 +1,10 @@
-import ilogger;
+import iloggerback;
 import loglevel;
 import ttylogger;
 
 static class SysLogger
 {
-	protected static ILogger l;
+	protected static ILoggerBack l;
 
 	protected static this()
 	{

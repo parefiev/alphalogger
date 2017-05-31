@@ -1,9 +1,9 @@
 import std.stdio;
-import alphalogger;
 import streamlogger;
 import loglevel;
+import iloggerback;
 
-class TtyLogger : AlphaLogger
+class TtyLogger : ILoggerBack
 {
 	protected StreamLogger streamLogger;
 
