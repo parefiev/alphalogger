@@ -2,6 +2,7 @@ import std.stdio;
 import streamlogger;
 import loglevel;
 import iloggerback;
+import coloriseconsoleformatter;
 
 class TtyLogger : ILoggerBack
 {
@@ -9,7 +10,7 @@ class TtyLogger : ILoggerBack
 
 	public this()
 	{
-		streamLogger = new StreamLogger(stdout, stderr);
+		streamLogger = new StreamLogger(stdout, stderr, new ColoriseConsoleFormatter);
 	}
 
 	public void log(LogLevel l, string message)

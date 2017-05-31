@@ -11,7 +11,8 @@
 		"targetType": "executable"
 	}],
 	"dependencies": {
-		"ialphalogger": "*"
+		"ialphalogger": "*",
+		"rainbow": "*"
 	},
 	"description": "Basic minimal logger",
 	"copyright": "Copyright © 2017, Pavel Arefiev",

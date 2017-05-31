@@ -1,26 +1,21 @@
 import std.stdio;
-import loglevel;
 import std.datetime;
-import std.format : format;
+import loglevel;
 import loglevelconverter;
 import iloggerback;
+import iformatter;
 
 class StreamLogger : ILoggerBack
 {
+	protected IFormatter f;
 	protected File stdout;
 	protected File stderr;
 
-	public this(File stdout, File stderr)
+	public this(File stdout, File stderr, IFormatter f)
 	{
 		this.stdout = stdout;
 		this.stderr = stderr;
-	}
-
-	protected string embrace(string s)
-	{
-		const leftSep = '[';
-		const rightSep = ']';
-		return leftSep ~ s ~ rightSep;
+		this.f = f;
 	}
 
 	public void log(LogLevel l, string m)
@@ -29,9 +24,7 @@ class StreamLogger : ILoggerBack
 		  * @todo Reserve place for timezone
 		  * @todo print timezone (+01:00, -02:00, etc.) anyway and always
 		  */
-		auto prefix = this.embrace(format("%-27s", Clock.currTime().toISOExtString()));
-		prefix ~= this.embrace(LogLevelConverter.to4LetterString(l));
-		prefix ~= " ";
+		auto formattedMessage = f.format(l, Clock.currTime, m);
 
 		switch(l)
 		{
@@ -40,12 +33,12 @@ class StreamLogger : ILoggerBack
 			case LogLevel.CRITICAL:
 			case LogLevel.ERROR:
 			case LogLevel.WARNING:
-				stderr.writeln(prefix ~ m);
+				stderr.writeln(formattedMessage);
 				break;
 			case LogLevel.NOTICE:
 			case LogLevel.INFO:
 			case LogLevel.DEBUG:
-				stdout.writeln(prefix ~ m);
+				stdout.writeln(formattedMessage);
 				break;
 			default:
 				/**
